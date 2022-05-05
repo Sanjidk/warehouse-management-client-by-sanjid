@@ -1,47 +1,46 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+// import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './Login.css'
+
 
 const Login = () => {
   return (
-    <div className="container w-50 mx-auto my-5 p-3 text-start shadow-lg">
-      <h1 className="fw-bold text-center text-danger mt-3 mb-5">LOGIN</h1>
-      <Form onSubmit=''>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            type="email"
-            placeholder="Enter your Email"
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            type="password"
-            placeholder="Enter your Password"
-            required
-          />
-        </Form.Group>
-        <div className='d-flex justify-content-between'>
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
+      <div className="wrapper">
+      <div className="text-center mb-4 name">
+            LOGIN
+        </div>
+        <div className="logo">
+            <img src="https://www.lucabottarostudio.com/wp-content/uploads/2019/05/google_PNG19635.png" alt="" />
+        </div>
+        
+        <form className="p-3 mt-3">
+            <div className="form-field d-flex align-items-center">
+                <span className="far fa-user"></span>
+                <input type="text" name="userName" id="userName" placeholder="Username" />
+            </div>
+            <div className="form-field d-flex align-items-center">
+                <span className="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password" />
+            </div>
+            <button className="btn mt-3 text-white">Login</button>
+        </form>
+        <div className=" d-flex w-75 mx-auto justify-content-between align-items-center fs-6">
         <Link
           to="/login"
-          className="text-primary pe-auto text-decoration-none"
-        >
-          Forget Password
-        </Link>
-        </div>
-      </Form>
-      <h5 className="mt-3">
-        New to This Website: {" "}
-        <Link
+           className="text-primary pe-auto text-decoration-none"
+         >
+           Forget Password
+         </Link>
+         <span className='fw-bold text-white'>or</span>
+         <Link
           to="/signup"
-          className="text-info pe-auto text-decoration-none"
-        >
-          Sign-Up Here
-        </Link>{" "}
-      </h5>
+           className="text-primary pe-auto text-decoration-none"
+         >
+           Sign Up
+         </Link>
+
+        </div>
     </div>
   );
 };

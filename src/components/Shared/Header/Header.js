@@ -22,7 +22,7 @@ const Header = () => {
 
         <Nav className="text-center fw-bold">
         <Nav.Link className='text-white header-compo' as={Link} to="/login">Login</Nav.Link>
-        {/* <Nav.Link className='text-white header-compo' as={Link} to="/signup">Sign Up</Nav.Link> */}
+        <Nav.Link className='text-white header-compo' as={Link} to="/signup">SignUp</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
