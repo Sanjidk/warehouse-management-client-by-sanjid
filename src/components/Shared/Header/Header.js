@@ -1,9 +1,19 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import './Header.css';
 
 const Header = () => {
+
+  const [user] = useAuthState(auth);
+
+  const handleSignout = ()=>{
+    signOut(auth);
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" sticky='top' bg="dark" variant="dark">
     <Container>
@@ -13,17 +23,30 @@ const Header = () => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto text-center fw-bold">
           <Nav.Link className='text-white header-compo' as={Link} to="/home">Home</Nav.Link>
-          <Nav.Link className='text-white header-compo' as={Link} to="/items">Items</Nav.Link>
-          <Nav.Link className='text-white header-compo' as={Link} to="/manageitems">Manage Items</Nav.Link>
-          <Nav.Link className='text-white header-compo' as={Link} to="/additem">Add Item</Nav.Link>
-          <Nav.Link className='text-white header-compo' as={Link} to="/myitems">My Items</Nav.Link>
           <Nav.Link className='text-white header-compo' as={Link} to="/blogs">Blogs</Nav.Link>
+          {user?
+          <div className='d-lg-flex'>
+                      <Nav.Link className='text-white header-compo' as={Link} to="/manageitems">Manage Items</Nav.Link>
+        <Nav.Link className='text-white header-compo' as={Link} to="/additem">Add Item</Nav.Link>
+        <Nav.Link className='text-white header-compo' as={Link} to="/myitems">My Items</Nav.Link>
+          </div>
+
+          :
+        <Nav.Link className='text-white header-compo' as={Link} to="/items">Items</Nav.Link>
+          }
         </Nav>
 
         <Nav className="text-center fw-bold">
-        <Nav.Link className='text-white header-compo' as={Link} to="/login">Login</Nav.Link>
-        <Nav.Link className='text-white header-compo' as={Link} to="/signup">SignUp</Nav.Link>
+        {user?         
+        <Nav.Link as={Link} to="/" onClick={handleSignout} className='text-white header-compo' >Log Out</Nav.Link>
+           :
+        <div className='d-lg-flex'>
+        <Nav.Link as={Link} to="/login" className='text-white header-compo' >Login</Nav.Link>
+        <Nav.Link as={Link} to="/signup" className='text-white header-compo' >Sign Up</Nav.Link>
+        </div>
+        }
         </Nav>
+
       </Navbar.Collapse>
     </Container>
   </Navbar>

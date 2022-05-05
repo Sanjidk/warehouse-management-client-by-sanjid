@@ -1,8 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import './Signup.css';
+import React, { useRef } from 'react';
+import { Button, Spinner } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Signup = () => {
+  const nameRef = useRef('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const navigate = useNavigate();
+  const [ createUserWithEmailAndPassword, user, loading3, error3 ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
+
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
+  const navigateLogin= () =>{
+    navigate('/login')
+  }
+
+  const handleSignup = event =>{
+    event.preventDefault();
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    createUserWithEmailAndPassword(email, password);  
+    }
+  
+    if(loading3){
+      return <Spinner animation="grow" variant="dark" />;
+  }
+
+  if(user){
+    navigate(from, { replace: true });
+  }
+
   return (
   <div className='bg-primary'>
     <div className="container">
@@ -12,28 +45,30 @@ const Signup = () => {
           <div className="card-img-left d-none d-md-flex">
           </div>
           <div className="card-body p-4 p-sm-5">
-            <h5 className="card-title text-center mb-5 fw-light fs-5">Sign Up</h5>
-            <form>
+            <h5 className="card-title text-center-dark mb-5 fw-bold fs-5">Sign Up Here</h5>
+            <form onSubmit={handleSignup}>
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInputUsername" placeholder="Username" required />
+                <input ref={nameRef} type="text" className="form-control" placeholder="Username" required />
                 <label>Username</label>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="email" className="form-control" id="floatingInputEmail" placeholder="email" />
+                <input ref={emailRef} type="email" className="form-control" placeholder="email" required />
                 <label>Email address</label>
               </div>
 
               <div className="form-floating mb-3">
-                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                <input ref={passwordRef} type="password" className="form-control" placeholder="Password" required />
                 <label>Password</label>
               </div>
 
               <div className="d-grid mb-2">
-                <button className="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Sign Up</button>
+              <Button variant="primary" type="submit">
+          Sign Up
+        </Button>
               </div>
 
-              <Link to="/login" className="text-primary pe-auto text-decoration-none" >
+              <Link to="/login" onClick={navigateLogin} className="text-primary pe-auto text-decoration-none" >
            Have an account? Login
          </Link>
             </form>
