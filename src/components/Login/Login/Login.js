@@ -68,7 +68,7 @@ const Login = () => {
   return (
     <div className="wrapper">
       <div className="text-center mb-4 name">LOGIN</div>
-      <div>
+      <div className="text-center">
         <SocialLogin></SocialLogin>
       </div>
 

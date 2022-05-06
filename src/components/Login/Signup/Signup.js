@@ -45,7 +45,7 @@ const Signup = () => {
             <div className="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
               <div className="card-img-left d-none d-md-flex"></div>
               <div className="card-body p-4 p-sm-5">
-                <h5 className="card-title text-center-dark mb-5 fw-bold fs-5">
+                <h5 className="card-title text-center text-dark mb-5 fw-bold fs-5">
                   Sign Up Here
                 </h5>
                 <form onSubmit={handleSignup}>
@@ -91,9 +91,9 @@ const Signup = () => {
                   <Link
                     to="/login"
                     onClick={navigateLogin}
-                    className="text-primary pe-auto text-decoration-none"
+                    className="text-primary text-decoration-none"
                   >
-                    Have an account? Login
+                    Have an account? Login{" "}
                   </Link>
                 </form>
               </div>
