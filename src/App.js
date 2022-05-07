@@ -16,6 +16,7 @@ import MyItems from './components/Main/MyItems/MyItems';
 import Items from './components/Main/Items/Items';
 import ManageItems from './components/Main/ManageItems/ManageItems';
 import ItemDetails from './components/Main/ItemDetails/ItemDetails';
+import UpcomingStock from './components/Main/UpcomingStock/UpcomingStock';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>} ></Route>
         <Route path="/inventory" element={<Items></Items>} ></Route>
+        <Route path="/upcoming" element={<UpcomingStock></UpcomingStock>} ></Route>
         <Route path="/inventory/:id" element={
         <RequireAuth>
         <ItemDetails></ItemDetails>
