@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useItems from '../../Hooks/useItems';
 import Item from '../Item/Item';
 
@@ -16,6 +17,9 @@ const Items = () => {
         item={item}
         ></Item>)
       }
+      </div>
+      <div className='text-center'>
+        <Link to='/manageitems'><button className='border-0 my-4 bg-success rounded text-white fw-bold p-2'>View All Items</button></Link>
       </div>
     </div>
   );
