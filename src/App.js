@@ -20,7 +20,7 @@ import UpcomingStock from './components/Main/UpcomingStock/UpcomingStock';
 
 function App() {
   return (
-    <div>
+    <div className='w-100'>
       <Header></Header>
       <Routes>
       <Route path="/" element={<Home></Home>}></Route>

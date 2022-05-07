@@ -5,7 +5,7 @@ const Footer = () => {
   const year = today.getFullYear();
 
   return (
-    <div className='bg-dark text-white footer-div py-4'>
+    <div className='bg-dark  text-white footer-div py-4'>
       <p className='m-0 text-center'>Copyright &#169; {year} Laptop Warehouse by Mahmud Sanjid</p>
     </div>
   );
