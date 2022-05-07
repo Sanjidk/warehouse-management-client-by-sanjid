@@ -6,6 +6,8 @@ import NotFound from './components/Shared/NotFound/NotFound';
 
 import Login from './components/Login/Login/Login';
 import Signup from './components/Login/Signup/Signup';
+import RequireAuth from './components/Login/RequireAuth/RequireAuth';
+
 
 import AddItem from './components/Main/AddItem/AddItem';
 import Blogs from './components/Main/Blogs/Blogs';
@@ -13,6 +15,7 @@ import Home from './components/Main/Home/Home';
 import MyItems from './components/Main/MyItems/MyItems';
 import Items from './components/Main/Items/Items';
 import ManageItems from './components/Main/ManageItems/ManageItems';
+import ItemDetails from './components/Main/ItemDetails/ItemDetails';
 
 function App() {
   return (
@@ -22,7 +25,12 @@ function App() {
       <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>} ></Route>
-        <Route path="/items" element={<Items></Items>} ></Route>
+        <Route path="/inventory" element={<Items></Items>} ></Route>
+        <Route path="/inventory/:Id" element={
+        <RequireAuth>
+        <ItemDetails></ItemDetails>
+      </RequireAuth>
+        } ></Route>
         <Route path="/additem" element={<AddItem></AddItem>} ></Route>
         <Route path="/myitems" element={<MyItems></MyItems>} ></Route>
         <Route path="/manageitems" element={<ManageItems></ManageItems>} ></Route>

@@ -32,6 +32,12 @@ const Header = () => {
             {user ? (
               <div className="d-lg-flex">
                 <Nav.Link
+                className="text-white header-compo"
+                as={Link}
+                to="/inventory"            >
+                Items
+              </Nav.Link>
+                <Nav.Link
                   className="text-white header-compo"
                   as={Link}
                   to="/manageitems"
@@ -56,8 +62,8 @@ const Header = () => {
             ) : (
               <Nav.Link
                 className="text-white header-compo"
-                href="home#items"
-              >
+                as={Link}
+                to="/inventory"            >
                 Items
               </Nav.Link>
             )}

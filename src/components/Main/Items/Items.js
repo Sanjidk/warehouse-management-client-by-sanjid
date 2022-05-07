@@ -12,7 +12,7 @@ const Items = () => {
       <div className='row row-cols-1 row-cols-md-3 w-100'>
       {
         newItem.map(item => <Item
-        key={item.id}
+        key={item._id}
         item={item}
         ></Item>)
       }
