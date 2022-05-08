@@ -29,12 +29,6 @@ const Header = () => {
             <Nav.Link className="text-white header-compo" as={Link} to="/blogs">
               Blogs
             </Nav.Link>
-            <Nav.Link className="text-white header-compo" as={Link} to="/items">
-              Items
-            </Nav.Link>
-            <Nav.Link className="text-white header-compo" as={Link} to="/upcoming">
-              Upcoming
-            </Nav.Link>
             {user ? (
               <div className="d-lg-flex">
                 <Nav.Link
@@ -60,8 +54,14 @@ const Header = () => {
                 </Nav.Link>
               </div>
             ) : (
-              <Nav.Link>
-              </Nav.Link>
+              <div className="d-lg-flex">
+              <Nav.Link className="text-white header-compo" as={Link} to="/items">
+              Items
+            </Nav.Link>
+            <Nav.Link className="text-white header-compo" as={Link} to="/upcoming">
+              Upcoming
+            </Nav.Link>
+              </div>
             )}
           </Nav>
 

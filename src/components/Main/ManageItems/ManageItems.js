@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useItems from '../../Hooks/useItems';
 
 
@@ -58,6 +59,9 @@ const ManageItems = () => {
                     )}
 
             </table>
+            <div className="text-center my-3">
+          <Link to={'/additem'}> <button className="btn btn-success">Add New Item</button> </Link>
+          </div>
     </div>
   );
 };
