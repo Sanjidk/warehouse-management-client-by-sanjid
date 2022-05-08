@@ -55,9 +55,6 @@ const Header = () => {
               </div>
             ) : (
               <div className="d-lg-flex">
-              <Nav.Link className="text-white header-compo" as={Link} to="/items">
-              Items
-            </Nav.Link>
             <Nav.Link className="text-white header-compo" as={Link} to="/upcoming">
               Upcoming
             </Nav.Link>
