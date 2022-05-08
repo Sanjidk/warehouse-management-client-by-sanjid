@@ -17,6 +17,7 @@ import Items from './components/Main/Items/Items';
 import ManageItems from './components/Main/ManageItems/ManageItems';
 import ItemDetails from './components/Main/ItemDetails/ItemDetails';
 import UpcomingStock from './components/Main/UpcomingStock/UpcomingStock';
+import SocialLogin from './components/Login/SocialLogin/SocialLogin';
 
 function App() {
   return (
@@ -33,11 +34,16 @@ function App() {
         <ItemDetails></ItemDetails>
       </RequireAuth>
         } ></Route>
-        <Route path="/additem" element={<AddItem></AddItem>} ></Route>
+        <Route path="/additem" element={
+         <RequireAuth>
+<AddItem></AddItem>
+       </RequireAuth>
+       } ></Route>
         <Route path="/myitems" element={<MyItems></MyItems>} ></Route>
         <Route path="/manageitems" element={<ManageItems></ManageItems>} ></Route>
 
         <Route path="/login" element={<Login></Login>} ></Route>
+        <Route path="/social" element={<SocialLogin></SocialLogin>} ></Route>
         <Route path="/signup" element={<Signup></Signup>} ></Route>
         <Route path="*" element={<NotFound></NotFound>} ></Route>
       </Routes>

@@ -1,114 +1,85 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import "./AddItem.css";
+import { Button, Form } from 'react-bootstrap';
+import React from 'react';
+import toast from 'react-hot-toast';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
-const Additem = () => {
-  const { register, handleSubmit } = useForm();
+const AddItem = () => {
 
-  const onSubmit = data => {
-    console.log(data);
+    const [user] = useAuthState(auth);
+    const handleItems = event => {
+    event.preventDefault();
 
-    const url = `http://localhost:5000/inventory`;
+    const name = event.target.name.value;
+    const price = event.target.price.value;
+    const img = event.target.img.value;
+    const description = event.target.description.value;
+    const quantity = event.target.quantity.value;
+    const supplierName = event.target.supplierName.value;
+    const email = user?.email;
+
+    const item = {
+        name: name,
+        price: price,
+        img: img,
+        description,
+        quantity,
+        supplierName: supplierName,
+        email
+    }
+
+    const url = 'http://localhost:5000/inventory';
     fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data)
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+
+        body: JSON.stringify(item)
     })
-      .then(res => res.json())
-      .then(result => {
-        console.log(result);
-      });
-  };
-
-  return (
-    <div className="bg-dark">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-10 col-xl-9 mx-auto">
-            <div className="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-              <div className="card-img-left d-none d-md-flex"></div>
-              <div className="card-body p-4 p-sm-5">
-                <h5 className="card-title text-center text-dark mb-3 fw-bold fs-5">
-                  ADD YOUR LAPTOP
-                </h5>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="form-floating mb-3">
-                    <input
-                      {...register("name")}
-                      type="text"
-                      className="form-control"
-                      placeholder="Laptop Name"
-                      required
-                    />
-                    <label>Laptop Name</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      {...register("supplierName")}
-                      type="text"
-                      className="form-control"
-                      placeholder="Supplier Name"
-                      required
-                    />
-                    <label>Supplier Name</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      {...register("price")}
-                      type="number"
-                      className="form-control"
-                      placeholder="Price"
-                      required
-                    />
-                    <label>Price</label>
-                  </div>
-                  <div className="form-floating mb-3">
-                    <input
-                      {...register("quantity")}
-                      type="number"
-                      className="form-control"
-                      placeholder="Quantity"
-                      required
-                    />
-                    <label>Quantity</label>
-                  </div>
-                  <textarea
-                    {...register("description")}
-                    className="form-control"
-                    placeholder="Description"
-                    required
-                    name=""
-                    id=""
-                    cols="45"
-                    rows="3"
-                  ></textarea>
-
-                  <div class="my-3">
-                    <input
-                      {...register("img")}
-                      class="form-control"
-                      type="file"
-                      id="formFile"
-                      required
-                    />
-                  </div>
-
-                  <div className="d-grid mb-2">
-                    <Button variant="primary" type="submit">
-                      Confirm
+        .then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                toast.success('The item has benn added successfully!')
+            }
+        })
+    event.target.reset();
+}
+    return (
+      <div className='mb-5 shadow-lg'>
+        <div className='shadow-lg'>
+        <h1 className='my-2 text-uppercase text-center text-dark'>Add New Item</h1>
+            <div className='w-25 mx-auto mt-4 ' >
+                <Form onSubmit={handleItems}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Control type="name" name='name' placeholder="Item Name" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='price' placeholder="Item Price" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='img' placeholder="Image URl" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control as="textarea" name='description' row='4' placeholder="A short description of Item" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="number" name='quantity' placeholder="Quantity" required/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="text" name='supplierName' placeholder="Supplier Name" required/>
+                    </Form.Group>
+                    <Button className='btn btn-primary mb-3' type="submit">
+                        Add This Item
                     </Button>
-                  </div>
-                </form>
-              </div>
+                </Form>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+        </div>
+
+
+
+    );
 };
 
-export default Additem;
+export default AddItem;

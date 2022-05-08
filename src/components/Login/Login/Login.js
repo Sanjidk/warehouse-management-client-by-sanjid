@@ -1,4 +1,3 @@
-import { Toast } from "bootstrap";
 import React, { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -7,7 +6,7 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Toast } from "react-bootstrap";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
@@ -90,7 +89,7 @@ const Login = () => {
             ref={passwordRef}
             type="password"
             name="password"
-            id="pwd"
+            id="password"
             placeholder="Password"
             required
           />

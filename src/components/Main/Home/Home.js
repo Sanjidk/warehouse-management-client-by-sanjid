@@ -6,7 +6,7 @@ import UpcomingStock from '../UpcomingStock/UpcomingStock';
 
 const Home = () => {
 
-  let loading;
+let loading;
 
   if (loading) {
     return <Spinner animation="grow" variant="dark" />;
