@@ -1,35 +1,37 @@
 import React, { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button, Spinner} from "react-bootstrap";
+import axios from "axios";
+import { Toast } from "bootstrap";
 import "./Login.css";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-import { Button, Spinner, Toast } from "react-bootstrap";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import axios from "axios";
+
 
 const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
   let errorElement;
   let from = location.state?.from?.pathname || "/";
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading5, error5] =
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, sending, resetError] =
     useSendPasswordResetEmail(auth);
 
-  if (error) {
+  if (error5) {
     errorElement = (
       <h5 className="text-danger m-4">
-        Error: {error?.message}
-        {resetError?.message}{" "}
+        Error: {error5?.message}
+        {resetError?.message}
       </h5>
     );
   }
@@ -43,9 +45,6 @@ const Login = () => {
     const {data} = await axios.post(`http://localhost:5000/login`, {email});
     localStorage.setItem('accessToken', data.accessToken);
     navigate(from, { replace: true });
-
-
-
 
   };
 
@@ -61,15 +60,14 @@ const Login = () => {
 
       Toast.success("Sent email");
     } else {
-      Toast.error("Email Address Not Found");
+      Toast.error5("Email Address Not Found");
     }
   };
 
-  if (loading || sending) {
-    return <Spinner animation="grow" variant="dark" />;
-  }
 
-  if (user) {
+
+  if (loading5 || sending) {
+    return <Spinner animation="grow" variant="dark" />;
   }
 
   return (
