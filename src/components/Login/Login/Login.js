@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button, Spinner} from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import axios from "axios";
 import { Toast } from "bootstrap";
 import "./Login.css";
@@ -10,7 +10,6 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
-
 
 const Login = () => {
   const emailRef = useRef("");
@@ -36,16 +35,18 @@ const Login = () => {
     );
   }
 
-  const handleLogin = async event => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     await signInWithEmailAndPassword(email, password);
 
-    const {data} = await axios.post(`http://localhost:5000/login`, {email});
-    localStorage.setItem('accessToken', data.accessToken);
+    const { data } = await axios.post(
+      `https://cryptic-reef-83388.herokuapp.com/login`,
+      { email }
+    );
+    localStorage.setItem("accessToken", data.accessToken);
     navigate(from, { replace: true });
-
   };
 
   const navigateSignup = () => {
@@ -63,8 +64,6 @@ const Login = () => {
       Toast.error5("Email Address Not Found");
     }
   };
-
-
 
   if (loading5 || sending) {
     return <Spinner animation="grow" variant="dark" />;

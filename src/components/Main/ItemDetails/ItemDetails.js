@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -10,11 +10,12 @@ const ItemDetails = () => {
   let { quantity } = inventory;
 
   useEffect(() => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) =>
-        {setInventory(data)});
+      .then((data) => {
+        setInventory(data);
+      });
   }, [id, inventory]);
 
   const handleDelivered = (id) => {
@@ -23,7 +24,7 @@ const ItemDetails = () => {
       const updatedQuantity = { quantity };
       inventory.quantity = quantity;
 
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -35,7 +36,7 @@ const ItemDetails = () => {
       quantity = "Sold Out";
       const updatedQuantity = { quantity };
 
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -46,7 +47,7 @@ const ItemDetails = () => {
     }
   };
 
-  const handleAdd = event => {
+  const handleAdd = (event) => {
     event.preventDefault();
     console.log(event.target.number);
 
@@ -60,7 +61,7 @@ const ItemDetails = () => {
 
     const updatedQuantity = { quantity };
 
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -94,7 +95,10 @@ const ItemDetails = () => {
           </div>
           <div className="card-body text-center">
             <p className="card-text">{description}</p>
-            <button onClick={()=> handleDelivered(_id)} className="btn btn-primary mt-3">
+            <button
+              onClick={() => handleDelivered(_id)}
+              className="btn btn-primary mt-3"
+            >
               Delivered{" "}
             </button>
           </div>
@@ -114,11 +118,8 @@ const ItemDetails = () => {
               </button>
             </div>
           </Form>
-
         </div>
-        
       </div>
-     
     </div>
   );
 };
