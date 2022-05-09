@@ -15,7 +15,7 @@ const ItemDetails = () => {
       .then((res) => res.json())
       .then((data) =>
         {setInventory(data)});
-  }, [inventory]);
+  }, [id, inventory]);
 
   const handleDelivered = (id) => {
     if (quantity > 1) {

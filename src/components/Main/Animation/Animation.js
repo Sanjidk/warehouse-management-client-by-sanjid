@@ -8,9 +8,9 @@ import hp from '../../../img/item/hp3.png';
 const Animation = () => {
   return (
     <div className='mt-3'>
-  <h1 class="text-center fw-bold text-white bg-info p-2"> &#9830; Most Stocked Product &#9830; </h1>
+  <h1 className="text-center fw-bold text-white bg-info p-2"> &#9830; Most Stocked Product &#9830; </h1>
 
-<div  class="buttom-img" >
+<div  className="buttom-img" >
   <img src={apple} alt="" />
   <img src={apple1} alt="" />
   <img src={dell} alt="" />

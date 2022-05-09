@@ -11,7 +11,7 @@ const MyItems = () => {
 
   useEffect(()=>{
     const newItems = async () =>{
-      const email = user?.email;
+      const email = user.email;
       const url = `http://localhost:5000/myitems?email=${email}`;
       await fetch(url)
       .then(res=> res.json())
@@ -43,7 +43,7 @@ const MyItems = () => {
 
   return (
     <div className='container'>
-            <h1 className='text-center text-white bg-info w-50 mx-auto p-2 m-2 rounded'>Manage Inventory : {myitems.length}</h1>
+            <h1 className='text-center text-white bg-info w-50 mx-auto p-2 m-2 rounded'>My Items : {myitems.length}</h1>
             <table className="table border border-dark border-3">
                 <thead>
                     <tr>
