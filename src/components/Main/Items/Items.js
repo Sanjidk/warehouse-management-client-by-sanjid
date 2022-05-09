@@ -9,7 +9,7 @@ const Items = () => {
   const newItem = items.slice(0,6);
   return (
     <div id='items'>
-      <h1 className='fw-bold mt-5 text-center'>Laptop Items</h1>
+      <h1 class="text-center fw-bold text-white bg-info p-3">Laptop Items</h1>
       <div className='row row-cols-1 row-cols-md-3 w-100'>
       {
         newItem.map(item => <Item

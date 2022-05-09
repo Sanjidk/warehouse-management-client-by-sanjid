@@ -1,5 +1,6 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
+import Animation from '../Animation/Animation';
 import BannerHome from '../BannerHome/BannerHome';
 import Items from '../Items/Items';
 import UpcomingStock from '../UpcomingStock/UpcomingStock';
@@ -16,6 +17,7 @@ let loading;
     <div>
       <BannerHome></BannerHome>
       <Items></Items>
+      <Animation></Animation>
       <UpcomingStock></UpcomingStock>
 
     </div>

@@ -15,6 +15,7 @@ const Signup = () => {
 
   const location = useLocation();
 
+  let errorElement;
   let from = location.state?.from?.pathname || "/";
 
   const navigateLogin = () => {
@@ -29,6 +30,13 @@ const Signup = () => {
     createUserWithEmailAndPassword(email, password);
   };
 
+  if (error3) {
+    errorElement = (
+      <h5 className="text-danger m-4">
+        Error: {error3?.message}
+      </h5>
+    );
+  }
   if (loading3) {
     return <Spinner animation="grow" variant="dark" />;
   }
@@ -96,6 +104,7 @@ const Signup = () => {
                     Have an account? Login{" "}
                   </Link>
                 </form>
+                {errorElement}
               </div>
             </div>
           </div>

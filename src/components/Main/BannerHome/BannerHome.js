@@ -17,19 +17,19 @@ const BannerHome = () => {
           <Carousel.Item>
             <img className="d-block w-100" src={apple} alt="First slide" />
             <Carousel.Caption>
-              <h3 className="text-dark">APPLE BRAND</h3>
+              <h5 className="text-white bg-dark p-1 rounded">APPLE BRAND</h5>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img className="d-block w-100" src={dell} alt="Second slide" />
             <Carousel.Caption>
-              <h3 className="text-end text-dark">DELL BRAND</h3>
+              <h5 className="text-white bg-dark p-1 rounded">DELL BRAND</h5>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img className="d-block w-100" src={hp} alt="Third slide" />
             <Carousel.Caption>
-              <h3 className=" text-start text-dark">HP BRAND</h3>
+              <h5 className="text-white bg-dark p-1 rounded">HP BRAND</h5>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

@@ -18,6 +18,7 @@ import ManageItems from './components/Main/ManageItems/ManageItems';
 import ItemDetails from './components/Main/ItemDetails/ItemDetails';
 import UpcomingStock from './components/Main/UpcomingStock/UpcomingStock';
 import SocialLogin from './components/Login/SocialLogin/SocialLogin';
+import Animation from './components/Main/Animation/Animation';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>} ></Route>
         <Route path="/inventory" element={<Items></Items>} ></Route>
+        <Route path="/animation" element={<Animation></Animation>} ></Route>
         <Route path="/upcoming" element={<UpcomingStock></UpcomingStock>} ></Route>
         <Route path="/inventory/:id" element={
         <RequireAuth>
