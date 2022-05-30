@@ -9,6 +9,7 @@ const ItemDetails = () => {
 
   let { quantity } = inventory;
 
+  
   useEffect(() => {
     const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
     fetch(url)

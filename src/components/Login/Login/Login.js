@@ -41,10 +41,7 @@ const Login = () => {
     const password = passwordRef.current.value;
     await signInWithEmailAndPassword(email, password);
 
-    const { data } = await axios.post(
-      `https://cryptic-reef-83388.herokuapp.com/login`,
-      { email }
-    );
+    const { data } = await axios.post(`https://cryptic-reef-83388.herokuapp.com/login`, { email });
     localStorage.setItem("accessToken", data.accessToken);
     navigate(from, { replace: true });
   };
