@@ -27,7 +27,7 @@ const AddItem = () => {
       email,
     };
 
-    const url = "https://cryptic-reef-83388.herokuapp.com/inventory";
+    const url = "https://murmuring-escarpment-19187.herokuapp.com/inventory";
     fetch(url, {
       method: "POST",
       headers: {

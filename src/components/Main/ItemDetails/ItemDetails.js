@@ -11,7 +11,7 @@ const ItemDetails = () => {
 
   
   useEffect(() => {
-    const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
+    const url = `https://murmuring-escarpment-19187.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -25,7 +25,7 @@ const ItemDetails = () => {
       const updatedQuantity = { quantity };
       inventory.quantity = quantity;
 
-      const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
+      const url = `https://murmuring-escarpment-19187.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -37,7 +37,7 @@ const ItemDetails = () => {
       quantity = "Sold Out";
       const updatedQuantity = { quantity };
 
-      const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
+      const url = `https://murmuring-escarpment-19187.herokuapp.com/inventory/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -62,7 +62,7 @@ const ItemDetails = () => {
 
     const updatedQuantity = { quantity };
 
-    const url = `https://cryptic-reef-83388.herokuapp.com/inventory/${id}`;
+    const url = `https://murmuring-escarpment-19187.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
